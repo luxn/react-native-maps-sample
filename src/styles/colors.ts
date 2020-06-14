@@ -1,0 +1,10 @@
+export const PRIMARY = '#2196f3';
+export const ACCENT = '#ffc107';
+export const WHITE = '#fff';
+export const BLACK = '#000';
+export const SUCCESS = '#4caf50';
+export const WARNING = '#ff9800';
+export const ERROR = '#f44336';
+export const GREY_LIGHT = '#eee';
+export const GREY_MEDIUM = '#9e9e9e';
+export const GREY_DARK = '#616161';

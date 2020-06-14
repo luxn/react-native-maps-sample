@@ -3,14 +3,10 @@ import {
     View,
     Text
 } from 'react-native';
-
-
-export default function MapScreen() {
+export default function ListScene() {
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>
-                Map           
-            </Text>
+            <Text>List!</Text>
         </View>
     );
 }

@@ -4,7 +4,7 @@ import {
     Text,
     Button,
 } from 'react-native';
-export default class HomeScreen extends React.Component {
+export default class HomeScene extends React.Component {
     constructor(props: any) {
         super(props);
     }
