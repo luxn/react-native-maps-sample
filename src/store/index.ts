@@ -2,13 +2,14 @@ import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 
 
-import { reduceLanguage } from './reducers';
+import { reduce } from './reducers';
 import { SampleStore } from './types';
 
 export const store = createStore<SampleStore>(
-    reduceLanguage,
+    reduce,
     {
-        language: 'de-DE'
+        language: 'de-DE',
+        pois: []
     },
     applyMiddleware(reduxThunk)
 );

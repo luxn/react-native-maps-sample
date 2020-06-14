@@ -23,6 +23,10 @@ class HomeScene extends React.Component<HomeSceneProps & HomeSceneDispatchers> {
         super(props);
     }
 
+    onChangeText(text: string) {
+        this.props.setLanguage(text);
+    }
+
     render() {
         const { navigation, route } = this.props;
         return (
@@ -32,7 +36,7 @@ class HomeScene extends React.Component<HomeSceneProps & HomeSceneDispatchers> {
                 <TextInput 
                 style={{height: 40, borderColor: 'grey', borderWidth: 1, width: 200}} 
                 placeholder="change language" 
-                onChangeText={(text) => this.props.setLanguage(text)}></TextInput>
+                onChangeText={(text) => this.onChangeText(text)}></TextInput>
                 <Button title="Go to Tabs" onPress={() => navigation.navigate('Tabs')} />
             </View>
         );

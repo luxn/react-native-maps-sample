@@ -1,6 +1,7 @@
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import * as constants from './constants';
 import { AnyAction } from 'redux';
+import { LatLng } from 'react-native-maps';
 
 export interface SetLanguage {
     type: constants.SET_LANGUAGE;
@@ -18,7 +19,7 @@ export function setLanguage(l: string): SetLanguage {
 
 export interface LoadPOIs {
     type: constants.LOAD_POIS,
-    pois: Array<number>
+    pois: Array<LatLng>
 }
 
 // TODO combine types like AnyAction from redux for relevant types instead of single LoadPOIs type in ThunkAction/ThunkDispatch
@@ -37,21 +38,20 @@ export function loadPOIs(bbox: Array<number>): ThunkAction<Promise<void>, {}, {}
 
                 // create 5 custom points inside bbox
 
-                const width = (bbox[0] + bbox[2]) / 2.0;
-                const height = (bbox[1] + bbox[3]) / 2.0;
+                const longitudeSpan = bbox[2] - bbox[0];
+                const latitudeSpan = bbox[3] - bbox[1];
 
-                let remotePOIs: Array<number> = [];
+                let remotePOIs: Array<LatLng> = [];
 
                 for (let i = 0; i < 5; i++) {
-                    const newWidth = (Math.random() * width) + bbox[0];
-                    const newHeight = (Math.random() * height) + bbox[1];
-                    remotePOIs.push(newWidth);
-                    remotePOIs.push(newHeight);
+                    const newLon = ((Math.random() * longitudeSpan) + bbox[0]) % 180;
+                    const newLat = ((Math.random() * latitudeSpan) + bbox[1]) % 90;                    
+                    remotePOIs.push({latitude: newLat, longitude: newLon});
                 }
 
                 dispatch({ type: constants.LOAD_POIS, pois: remotePOIs });
                 resolve();
-            }, 1000);
+            }, 300);
         });
 
 
