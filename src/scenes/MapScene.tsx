@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import Geolocation, { GeolocationResponse } from '@react-native-community/geolocation';
 
-import MapView, { PROVIDER_GOOGLE, Region, Marker, LatLng } from 'react-native-maps';
+import MapView, { PROVIDER_DEFAULT, Region, Marker, LatLng } from 'react-native-maps';
 import { bindActionCreators, Dispatch, AnyAction } from 'redux';
 import { connect } from 'react-redux';
 
@@ -98,7 +98,7 @@ class MapScene extends React.Component<MapSceneProps & MapSceneDispatchers, MapS
                 <MapView
                     ref={this.mapRef}
                     style={styles.map}
-                    provider={PROVIDER_GOOGLE}
+                    provider={PROVIDER_DEFAULT}
                     onRegionChangeComplete={(region) => this.onRegionChangeComplete(region)}
                     initialRegion={{latitude: 53.54058415860257, longitude: 9.964661803096533, latitudeDelta: 0.15, longitudeDelta: 0.15}}
                 >
